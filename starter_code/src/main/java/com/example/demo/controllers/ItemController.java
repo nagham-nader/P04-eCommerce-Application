@@ -36,5 +36,14 @@ public class ItemController {
 				: ResponseEntity.ok(items);
 			
 	}
+
+
+	public ResponseEntity<List<Item>> saveItems(List<Item> items){
+		for (Item item:items) {
+			itemRepository.save(item);
+		}
+		return items == null || items.isEmpty() ? ResponseEntity.notFound().build()
+				: ResponseEntity.ok(items);
+	}
 	
 }
