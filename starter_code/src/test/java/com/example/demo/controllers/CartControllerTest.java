@@ -55,6 +55,12 @@ public class CartControllerTest {
         Assert.assertEquals(200, response.getStatusCode().value());
         Assert.assertEquals(BigDecimal.valueOf(7.0), response.getBody().getTotal());
 
+        //Test not valid Item id
+        req.setItemId(4);
+        ResponseEntity<Cart> response2 = cartController.addTocart(req);
+        Assert.assertEquals(404, response2.getStatusCode().value());
+
+
     }
     @Test
     public void removeFromCartTest(){
