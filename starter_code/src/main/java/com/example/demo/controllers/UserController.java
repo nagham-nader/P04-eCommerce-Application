@@ -1,5 +1,7 @@
 package com.example.demo.controllers;
+import org.slf4j.Logger;
 
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -29,6 +31,8 @@ public class UserController {
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+	public static final Logger log = LoggerFactory.getLogger(UserController.class);
+
 	@GetMapping("/id/{id}")
 	public ResponseEntity<User> findById(@PathVariable Long id) {
 		return ResponseEntity.of(userRepository.findById(id));
@@ -54,6 +58,9 @@ public class UserController {
 		cartRepository.save(cart);
 		user.setCart(cart);
 		userRepository.save(user);
+
+		log.info("User Created and saved : " + user.getUsername());
+
 		return ResponseEntity.ok(user);
 	}
 	
