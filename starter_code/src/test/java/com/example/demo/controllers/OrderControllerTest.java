@@ -88,9 +88,7 @@ public class OrderControllerTest {
         order = UserOrder.createFromCart(user.getCart());
         List<UserOrder> orders = new ArrayList<>();
         orders.add(order);
-
-        orderController.submit(user.getUsername());
-
+        
 
         when(userRepo.findByUsername(user.getUsername())).thenReturn(user);
         when(orderRepo.findByUser(user)).thenReturn(orders);
