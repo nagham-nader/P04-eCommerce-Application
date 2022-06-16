@@ -10,6 +10,8 @@ import com.example.demo.model.persistence.repositories.UserRepository;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
 
@@ -29,6 +31,7 @@ public class OrderControllerTest {
     private User user;
     private Cart cart;
     private UserOrder order;
+    public static final Logger log = LoggerFactory.getLogger(UserController.class);
 
     @Before
     public void setUp() {
@@ -44,6 +47,8 @@ public class OrderControllerTest {
 
     @Test
     public void submitUserOrderHappyPath(){
+        log.info("orderRequest : Start submitUserOrderHappyPath Test");
+
         ResponseEntity<UserOrder> response = orderController.submit(user.getUsername());
 
         Assert.assertEquals(200, response.getStatusCode().value());
@@ -55,6 +60,8 @@ public class OrderControllerTest {
     }
     @Test
     public void submitUserOrderSadPath(){
+        log.info("orderRequest : Start submitUserOrderSadPath Test");
+
         //Unauthenticated user
         ResponseEntity<UserOrder> response = orderController.submit(user.getUsername()+ "123");
         //Not Found
@@ -63,6 +70,8 @@ public class OrderControllerTest {
 
     @Test
     public void getOrdersForUserHappyPath(){
+        log.info("orderRequest : Start getOrdersForUserHappyPath Test");
+
 
         ResponseEntity<List<UserOrder>> response = orderController.getOrdersForUser(user.getUsername());
         Assert.assertEquals(200, response.getStatusCode().value());
@@ -75,6 +84,8 @@ public class OrderControllerTest {
 
     @Test
     public void getOrdersForUserBadPath(){
+        log.info("orderRequest : Start getOrdersForUserBadPath Test");
+
         //Unauthenticated user
         ResponseEntity<List<UserOrder>> response = orderController.getOrdersForUser(user.getUsername() + "123");
         //Not Found

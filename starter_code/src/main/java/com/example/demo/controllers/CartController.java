@@ -41,22 +41,22 @@ public class CartController {
 	public ResponseEntity<Cart> addTocart(@RequestBody ModifyCartRequest request) {
 		User user = userRepository.findByUsername(request.getUsername());
 		if(user == null) {
-			log.error("User Not Found" + request.getUsername());
+			log.error("cartRequest : addToCart request failure, UserName : " + request.getUsername());
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
 		Optional<Item> item = itemRepository.findById(request.getItemId());
 		if(!item.isPresent()) {
-			log.error("Item Not Found : " + request.getItemId());
+			log.error("cartRequest : addToCart request failure, Item Not Found : " + request.getItemId());
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
 		Cart cart = user.getCart();
 		cart.setUser(user);
 		IntStream.range(0, request.getQuantity())
 			.forEach(i -> cart.addItem(item.get()));
-		log.info("item Added to Cart : " + item.get().getId());
+		log.info("cartRequest : addToCart request Item Added to Cart : " + item.get().getId());
 
 		cartRepository.save(cart);
-		log.info("Cart saved for User : " + cart.getUser().getUsername());
+		log.info("cartRequest : addToCart request success UserName : " + cart.getUser().getUsername());
 
 		return ResponseEntity.ok(cart);
 	}
@@ -65,22 +65,22 @@ public class CartController {
 	public ResponseEntity<Cart> removeFromcart(@RequestBody ModifyCartRequest request) {
 		User user = userRepository.findByUsername(request.getUsername());
 		if(user == null) {
-			log.error("User Not Found" + request.getUsername());
+			log.error("cartRequest : removeFromCart request failure, User Not Found" + request.getUsername());
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
 		Optional<Item> item = itemRepository.findById(request.getItemId());
 		if(!item.isPresent()) {
-			log.error("Item Not Found : " + request.getItemId());
+			log.error("cartRequest : removeFromCart request failure, Item Not Found : " + request.getItemId());
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
 		Cart cart = user.getCart();
 		cart.setUser(user);
 		IntStream.range(0, request.getQuantity())
 			.forEach(i -> cart.removeItem(item.get()));
-		log.info("item Removed from Cart : " + item.get().getId());
+		log.info("cartRequest : removeFromCart request success, item Removed from Cart : " + item.get().getId());
 
 		cartRepository.save(cart);
-		log.info("Cart Updated after remove for User : " + cart.getUser().getUsername());
+		log.info("cartRequest : removeFromCart request Updated after remove for User : " + cart.getUser().getUsername());
 
 		return ResponseEntity.ok(cart);
 	}

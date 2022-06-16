@@ -11,6 +11,8 @@ import com.example.demo.model.requests.ModifyCartRequest;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
 
@@ -31,6 +33,9 @@ public class CartControllerTest {
 
     private ItemRepository itemRepo = mock(ItemRepository.class);
 
+    public static final Logger log = LoggerFactory.getLogger(UserController.class);
+
+
     @Before
     public void setUp(){
         cartController = new CartController();
@@ -42,6 +47,7 @@ public class CartControllerTest {
 
     @Test
     public void addToCartHappyPath(){
+        log.info("cartRequest : Start addToCartHappyPath Test");
         User user = mockUser();
         Item item = mockUItemWithPrise(3.50);
 
@@ -63,6 +69,8 @@ public class CartControllerTest {
 
     @Test
     public void addToCartBadPath(){
+        log.info("cartRequest : Start addToCartBadPath Test");
+
         //Fake User
         User user = new User();
         user.setUsername("FakeUser");
@@ -82,6 +90,8 @@ public class CartControllerTest {
     @Test
     public void removeFromCartTest(){
 
+        log.info("cartRequest : Start removeFromCartTest Test");
+
         User user = mockUser();
         Item item = mockUItemWithPrise(3.50);
 
@@ -98,6 +108,9 @@ public class CartControllerTest {
     }
     @Test
     public void removeFromCartBadPathItem(){
+
+        log.info("cartRequest : Start removeFromCartBadPathItem Test");
+
         User user = mockUser();
 
         //Fake Item
@@ -114,6 +127,7 @@ public class CartControllerTest {
 
     @Test
     public void removeFromCartBadPathUser(){
+        log.info("cartRequest : Start removeFromCartBadPathUser Test");
 
         //Fake User
         User user = new User();

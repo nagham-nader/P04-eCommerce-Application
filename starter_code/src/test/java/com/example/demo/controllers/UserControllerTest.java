@@ -8,6 +8,8 @@ import com.example.demo.model.requests.CreateUserRequest;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -28,6 +30,8 @@ public class UserControllerTest {
     private CartRepository cartRepo = mock(CartRepository.class);
 
     private BCryptPasswordEncoder encoder = mock(BCryptPasswordEncoder.class);
+    public static final Logger log = LoggerFactory.getLogger(UserController.class);
+
 
     @Before
     public void setUp(){
@@ -40,6 +44,8 @@ public class UserControllerTest {
 
     @Test
     public void createUserHappyPath(){
+        log.info("userRequest : Start createUserHappyPath Test");
+
         when(encoder.encode("testPassword")).thenReturn("encodedPassword");
 
         CreateUserRequest req = new CreateUserRequest();
@@ -68,9 +74,11 @@ public class UserControllerTest {
 
     @Test
     public void createUserBadPath(){
+        log.info("userRequest : Start createUserBadPath Test");
         CreateUserRequest req = new CreateUserRequest();
         req.setUsername("test");
         req.setPassword("testPassword");
+
         //Not same Password
         req.setConfirmPassword("testPassword123");
 

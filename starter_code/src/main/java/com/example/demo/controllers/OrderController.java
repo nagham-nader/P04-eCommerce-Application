@@ -35,7 +35,7 @@ public class OrderController {
 	public ResponseEntity<UserOrder> submit(@PathVariable String username) {
 		User user = userRepository.findByUsername(username);
 		if(user == null) {
-			log.error("Cannot submit Order, User Not Found : " + username);
+			log.error("orderRequest : order Submit request failure, User Not Found : " + username);
 
 			return ResponseEntity.notFound().build();
 		}
@@ -43,7 +43,7 @@ public class OrderController {
 		orderRepository.save(order);
 		user.setCart(new Cart());
 		userRepository.save(user);
-		log.info("User Order is Submitted, and User Cart refreshed : " + user.getUsername());
+		log.info("orderRequest : order Submit request success UserName : " + user.getUsername());
 		return ResponseEntity.ok(order);
 	}
 	
@@ -51,11 +51,11 @@ public class OrderController {
 	public ResponseEntity<List<UserOrder>> getOrdersForUser(@PathVariable String username) {
 		User user = userRepository.findByUsername(username);
 		if(user == null) {
-			log.error("Cannot get history, User Not Found : " + username);
+			log.error("orderRequest : order History request failure, User Not Found : " + username);
 
 			return ResponseEntity.notFound().build();
 		}
-		log.info("Order History for User : "+ user.getUsername());
+		log.info("orderRequest : order History request success UserName : "+ user.getUsername());
 		return ResponseEntity.ok(orderRepository.findByUser(user));
 	}
 }
