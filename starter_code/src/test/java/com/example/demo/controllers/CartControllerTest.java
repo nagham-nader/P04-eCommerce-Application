@@ -38,11 +38,10 @@ public class CartControllerTest {
         TestUtils.injectObjects(cartController, "cartRepository", cartRepo);
         TestUtils.injectObjects(cartController, "itemRepository", itemRepo);
 
-
     }
 
     @Test
-    public void addToCartTest(){
+    public void addToCartHappyPath(){
         User user = mockUser();
         Item item = mockUItemWithPrise(3.50);
 
@@ -60,8 +59,26 @@ public class CartControllerTest {
         ResponseEntity<Cart> response2 = cartController.addTocart(req);
         Assert.assertEquals(404, response2.getStatusCode().value());
 
-
     }
+
+    @Test
+    public void addToCartBadPath(){
+        //Fake User
+        User user = new User();
+        user.setUsername("FakeUser");
+
+
+        Item item = mockUItemWithPrise(3.50);
+
+        ModifyCartRequest req = new ModifyCartRequest();
+        req.setItemId(item.getId());
+        req.setQuantity(2);
+        req.setUsername(user.getUsername());
+        ResponseEntity<Cart> response = cartController.addTocart(req);
+
+        Assert.assertEquals(404, response.getStatusCode().value());
+    }
+
     @Test
     public void removeFromCartTest(){
 
@@ -80,9 +97,6 @@ public class CartControllerTest {
 
     }
 
-
-
-
     private User mockUser(){
         //Create User
         User user = new User();
@@ -91,6 +105,7 @@ public class CartControllerTest {
         when(userRepo.findByUsername(user.getUsername())).thenReturn(user);
         return user;
     }
+
     private Item mockUItemWithPrise(double prise){
         //Create Item
         Item item = new Item();

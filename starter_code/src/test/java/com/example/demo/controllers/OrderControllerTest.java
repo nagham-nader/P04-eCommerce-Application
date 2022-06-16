@@ -11,7 +11,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.core.annotation.Order;
 import org.springframework.http.ResponseEntity;
 
 import java.math.BigDecimal;
@@ -55,7 +54,15 @@ public class OrderControllerTest {
 
     }
     @Test
-    public void getOrdersForUserTest(){
+    public void submitUserOrderSadPath(){
+        //Unauthenticated user
+        ResponseEntity<UserOrder> response = orderController.submit(user.getUsername()+ "123");
+        //Not Found
+        Assert.assertEquals(404, response.getStatusCode().value());
+    }
+
+    @Test
+    public void getOrdersForUserHappyPath(){
 
         ResponseEntity<List<UserOrder>> response = orderController.getOrdersForUser(user.getUsername());
         Assert.assertEquals(200, response.getStatusCode().value());
@@ -64,7 +71,14 @@ public class OrderControllerTest {
         Assert.assertNotNull(resOrders);
         Assert.assertEquals(user.getCart().getItems(), resOrders.get(0).getItems());
         Assert.assertEquals(user.getCart().getTotal(), resOrders.get(0).getTotal());
+    }
 
+    @Test
+    public void getOrdersForUserBadPath(){
+        //Unauthenticated user
+        ResponseEntity<List<UserOrder>> response = orderController.getOrdersForUser(user.getUsername() + "123");
+        //Not Found
+        Assert.assertEquals(404, response.getStatusCode().value());
     }
 
     private void mockUserCart(){

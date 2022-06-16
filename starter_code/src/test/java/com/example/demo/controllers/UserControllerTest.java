@@ -38,15 +38,14 @@ public class UserControllerTest {
 
     }
 
-
     @Test
     public void createUserHappyPath(){
-        when(encoder.encode("testpassword")).thenReturn("Nop");
+        when(encoder.encode("testPassword")).thenReturn("encodedPassword");
 
         CreateUserRequest req = new CreateUserRequest();
         req.setUsername("test");
-        req.setPassword("testpassword");
-        req.setConfirmPassword("testpassword");
+        req.setPassword("testPassword");
+        req.setConfirmPassword("testPassword");
 
         ResponseEntity<User> response = userController.createUser(req);
         Assert.assertNotNull(response);
@@ -54,7 +53,7 @@ public class UserControllerTest {
 
         User user = response.getBody();
         Assert.assertEquals("test",user.getUsername());
-        Assert.assertEquals("Nop",user.getPassword());
+        Assert.assertEquals("encodedPassword",user.getPassword());
 
         //Test the find user By Id
         when(userRepo.findById(user.getId())).thenReturn(Optional.of(user));
@@ -67,6 +66,17 @@ public class UserControllerTest {
         Assert.assertEquals(200, response2.getStatusCodeValue());
     }
 
+    @Test
+    public void createUserBadPath(){
+        CreateUserRequest req = new CreateUserRequest();
+        req.setUsername("test");
+        req.setPassword("testPassword");
+        //Not same Password
+        req.setConfirmPassword("testPassword123");
 
+        ResponseEntity<User> response = userController.createUser(req);
+        //bad Request
+        Assert.assertEquals(400, response.getStatusCode().value());
+    }
 
 }
