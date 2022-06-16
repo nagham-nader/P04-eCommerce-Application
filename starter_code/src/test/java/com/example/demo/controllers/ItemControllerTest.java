@@ -55,6 +55,20 @@ public class ItemControllerTest {
         Assert.assertEquals(savedItems.get(0).getName(), response.getBody().getName());
         Assert.assertEquals(savedItems.get(0).getPrice(), response.getBody().getPrice());
     }
+
+    @Test
+    public void TestGetItemByName() {
+        List<Item> items = new ArrayList<>();
+        items.add(savedItems.get(0));
+        when(itemRepo.findByName(savedItems.get(0).getName())).thenReturn(items);
+
+
+        ResponseEntity<List<Item>> response = itemController.getItemsByName(savedItems.get(0).getName());
+        Assert.assertEquals(200, response.getStatusCode().value());
+        Assert.assertEquals(savedItems.get(0).getName(), response.getBody().get(0).getName());
+        Assert.assertEquals(savedItems.get(0).getPrice(), response.getBody().get(0).getPrice());
+    }
+
     @Test
     public void TestGetItemByIdNotFound() {
         //Comment the return from the Repo Code - > item Not Found

@@ -96,7 +96,39 @@ public class CartControllerTest {
 
 
     }
+    @Test
+    public void removeFromCartBadPathItem(){
+        User user = mockUser();
 
+        //Fake Item
+        Item item = new Item();
+        item.setId(23L);
+        ModifyCartRequest req = new ModifyCartRequest();
+        req.setItemId(item.getId());
+        req.setQuantity(2);
+        req.setUsername(user.getUsername());
+
+        ResponseEntity<Cart> response = cartController.removeFromcart(req);
+        Assert.assertEquals(404, response.getStatusCode().value());
+    }
+
+    @Test
+    public void removeFromCartBadPathUser(){
+
+        //Fake User
+        User user = new User();
+        user.setUsername("FakeUser");
+        Item item = mockUItemWithPrise(3.50);
+
+        ModifyCartRequest req = new ModifyCartRequest();
+        req.setItemId(item.getId());
+        req.setQuantity(2);
+        req.setUsername(user.getUsername());
+
+        ResponseEntity<Cart> response = cartController.removeFromcart(req);
+        Assert.assertEquals(404, response.getStatusCode().value());
+
+    }
     private User mockUser(){
         //Create User
         User user = new User();
