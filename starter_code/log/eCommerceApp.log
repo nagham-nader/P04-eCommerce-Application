@@ -1,0 +1,96 @@
+2022-06-16 09:19:37.385  INFO 44379 --- [main] c.example.demo.SareetaApplicationTests   : Starting SareetaApplicationTests on Nagham-MacBook-Pro with PID 44379 (started by nagham in /Users/nagham/Downloads/nana-udacity-projects/P04-eCommerceApplication/starter_code)
+2022-06-16 09:19:37.387  INFO 44379 --- [main] c.example.demo.SareetaApplicationTests   : No active profile set, falling back to default profiles: default
+2022-06-16 09:19:38.197  INFO 44379 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2022-06-16 09:19:38.258  INFO 44379 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 52ms. Found 4 repository interfaces.
+2022-06-16 09:19:38.868  INFO 44379 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$791b0d2] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-06-16 09:19:39.058  INFO 44379 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-06-16 09:19:39.218  INFO 44379 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-06-16 09:19:39.292  INFO 44379 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2022-06-16 09:19:39.361  INFO 44379 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.10.Final}
+2022-06-16 09:19:39.362  INFO 44379 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2022-06-16 09:19:39.527  INFO 44379 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2022-06-16 09:19:39.669  INFO 44379 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-06-16 09:19:40.359  INFO 44379 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-06-16 09:19:41.051  WARN 44379 --- [main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-06-16 09:19:41.175  INFO 44379 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@25c16cf7, org.springframework.security.web.context.SecurityContextPersistenceFilter@735167e1, org.springframework.security.web.header.HeaderWriterFilter@4769378c, org.springframework.web.filter.CorsFilter@53dbe7b2, org.springframework.security.web.authentication.logout.LogoutFilter@7f02b2d4, com.example.demo.security.JWTAuthenticationFilter@520ec7a7, com.example.demo.security.JWTAuthenticationVerficationFilter@53551fef, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2ec156fb, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1bf52f10, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7d5d77a6, org.springframework.security.web.session.SessionManagementFilter@67671db1, org.springframework.security.web.access.ExceptionTranslationFilter@1942a36e, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@21dd9203]
+2022-06-16 09:19:41.512  INFO 44379 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-06-16 09:19:41.758  INFO 44379 --- [main] c.example.demo.SareetaApplicationTests   : Started SareetaApplicationTests in 4.733 seconds (JVM running for 5.665)
+2022-06-16 09:19:42.049  INFO 44379 --- [main] c.e.demo.controllers.UserController      : cartRequest : Start addToCartHappyPath Test
+2022-06-16 09:19:42.061  INFO 44379 --- [main] c.e.demo.controllers.CartController      : cartRequest : addToCart request Item Added to Cart : 1
+2022-06-16 09:19:42.061  INFO 44379 --- [main] c.e.demo.controllers.CartController      : cartRequest : addToCart request success UserName : test
+2022-06-16 09:19:42.067 ERROR 44379 --- [main] c.e.demo.controllers.CartController      : cartRequest : addToCart request failure, Item Not Found : 4
+2022-06-16 09:19:42.068  INFO 44379 --- [main] c.e.demo.controllers.UserController      : cartRequest : Start removeFromCartTest Test
+2022-06-16 09:19:42.069  INFO 44379 --- [main] c.e.demo.controllers.CartController      : cartRequest : removeFromCart request success, item Removed from Cart : 1
+2022-06-16 09:19:42.069  INFO 44379 --- [main] c.e.demo.controllers.CartController      : cartRequest : removeFromCart request Updated after remove for User : test
+2022-06-16 09:19:42.070  INFO 44379 --- [main] c.e.demo.controllers.UserController      : cartRequest : Start removeFromCartBadPathItem Test
+2022-06-16 09:19:42.071 ERROR 44379 --- [main] c.e.demo.controllers.CartController      : cartRequest : removeFromCart request failure, Item Not Found : 23
+2022-06-16 09:19:42.071  INFO 44379 --- [main] c.e.demo.controllers.UserController      : cartRequest : Start removeFromCartBadPathUser Test
+2022-06-16 09:19:42.072 ERROR 44379 --- [main] c.e.demo.controllers.CartController      : cartRequest : removeFromCart request failure, User Not FoundFakeUser
+2022-06-16 09:19:42.074  INFO 44379 --- [main] c.e.demo.controllers.UserController      : cartRequest : Start addToCartBadPath Test
+2022-06-16 09:19:42.075 ERROR 44379 --- [main] c.e.demo.controllers.CartController      : cartRequest : addToCart request failure, UserName : FakeUser
+2022-06-16 09:19:42.183  INFO 44379 --- [main] c.e.demo.controllers.UserController      : orderRequest : Start submitUserOrderSadPath Test
+2022-06-16 09:19:42.184 ERROR 44379 --- [main] c.e.demo.controllers.OrderController     : orderRequest : order Submit request failure, User Not Found : test123
+2022-06-16 09:19:42.185  INFO 44379 --- [main] c.e.demo.controllers.UserController      : orderRequest : Start getOrdersForUserBadPath Test
+2022-06-16 09:19:42.186 ERROR 44379 --- [main] c.e.demo.controllers.OrderController     : orderRequest : order History request failure, User Not Found : test123
+2022-06-16 09:19:42.187  INFO 44379 --- [main] c.e.demo.controllers.UserController      : orderRequest : Start submitUserOrderHappyPath Test
+2022-06-16 09:19:42.187  INFO 44379 --- [main] c.e.demo.controllers.OrderController     : orderRequest : order Submit request success UserName : test
+2022-06-16 09:19:42.188  INFO 44379 --- [main] c.e.demo.controllers.UserController      : orderRequest : Start getOrdersForUserHappyPath Test
+2022-06-16 09:19:42.189  INFO 44379 --- [main] c.e.demo.controllers.OrderController     : orderRequest : order History request success UserName : test
+2022-06-16 09:19:42.234  INFO 44379 --- [main] c.e.demo.controllers.UserController      : userRequest : Start createUserBadPath Test
+2022-06-16 09:19:42.236  INFO 44379 --- [main] c.e.demo.controllers.UserController      : userRequest : Create User request failure UserName : test
+2022-06-16 09:19:42.237  INFO 44379 --- [main] c.e.demo.controllers.UserController      : userRequest : Start createUserHappyPath Test
+2022-06-16 09:19:42.243  INFO 44379 --- [main] c.e.demo.controllers.UserController      : userRequest : Create User request success UserName : test
+2022-06-16 09:19:42.257  INFO 44379 --- [Thread-2] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2022-06-16 09:19:42.264  INFO 44379 --- [Thread-2] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-06-16 09:19:42.268  INFO 44379 --- [Thread-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-06-16 09:19:42.277  INFO 44379 --- [Thread-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-06-16 09:19:46.010  INFO 44402 --- [main] c.example.demo.SareetaApplicationTests   : Starting SareetaApplicationTests on Nagham-MacBook-Pro with PID 44402 (started by nagham in /Users/nagham/Downloads/nana-udacity-projects/P04-eCommerceApplication/starter_code)
+2022-06-16 09:19:46.011  INFO 44402 --- [main] c.example.demo.SareetaApplicationTests   : No active profile set, falling back to default profiles: default
+2022-06-16 09:19:46.474  INFO 44402 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2022-06-16 09:19:46.620  INFO 44402 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 136ms. Found 4 repository interfaces.
+2022-06-16 09:19:47.098  INFO 44402 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$3650c850] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-06-16 09:19:47.340  INFO 44402 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-06-16 09:19:47.506  INFO 44402 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-06-16 09:19:47.599  INFO 44402 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2022-06-16 09:19:47.666  INFO 44402 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.10.Final}
+2022-06-16 09:19:47.668  INFO 44402 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2022-06-16 09:19:47.810  INFO 44402 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2022-06-16 09:19:47.987  INFO 44402 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-06-16 09:19:48.713  INFO 44402 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-06-16 09:19:49.542  WARN 44402 --- [main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-06-16 09:19:49.669  INFO 44402 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6aa792, org.springframework.security.web.context.SecurityContextPersistenceFilter@23d12a3a, org.springframework.security.web.header.HeaderWriterFilter@5df54296, org.springframework.web.filter.CorsFilter@5c78f456, org.springframework.security.web.authentication.logout.LogoutFilter@77226121, com.example.demo.security.JWTAuthenticationFilter@29174dfe, com.example.demo.security.JWTAuthenticationVerficationFilter@319d106c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@46590dd0, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2a341e3d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@641e67fa, org.springframework.security.web.session.SessionManagementFilter@56a72887, org.springframework.security.web.access.ExceptionTranslationFilter@4fce3ed7, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@677c2820]
+2022-06-16 09:19:50.133  INFO 44402 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-06-16 09:19:50.479  INFO 44402 --- [main] c.example.demo.SareetaApplicationTests   : Started SareetaApplicationTests in 4.848 seconds (JVM running for 5.883)
+2022-06-16 09:19:50.830  INFO 44402 --- [main] c.e.demo.controllers.UserController      : cartRequest : Start addToCartHappyPath Test
+2022-06-16 09:19:50.842  INFO 44402 --- [main] c.e.demo.controllers.CartController      : cartRequest : addToCart request Item Added to Cart : 1
+2022-06-16 09:19:50.842  INFO 44402 --- [main] c.e.demo.controllers.CartController      : cartRequest : addToCart request success UserName : test
+2022-06-16 09:19:50.849 ERROR 44402 --- [main] c.e.demo.controllers.CartController      : cartRequest : addToCart request failure, Item Not Found : 4
+2022-06-16 09:19:50.850  INFO 44402 --- [main] c.e.demo.controllers.UserController      : cartRequest : Start removeFromCartTest Test
+2022-06-16 09:19:50.851  INFO 44402 --- [main] c.e.demo.controllers.CartController      : cartRequest : removeFromCart request success, item Removed from Cart : 1
+2022-06-16 09:19:50.852  INFO 44402 --- [main] c.e.demo.controllers.CartController      : cartRequest : removeFromCart request Updated after remove for User : test
+2022-06-16 09:19:50.853  INFO 44402 --- [main] c.e.demo.controllers.UserController      : cartRequest : Start removeFromCartBadPathItem Test
+2022-06-16 09:19:50.855 ERROR 44402 --- [main] c.e.demo.controllers.CartController      : cartRequest : removeFromCart request failure, Item Not Found : 23
+2022-06-16 09:19:50.857  INFO 44402 --- [main] c.e.demo.controllers.UserController      : cartRequest : Start removeFromCartBadPathUser Test
+2022-06-16 09:19:50.859 ERROR 44402 --- [main] c.e.demo.controllers.CartController      : cartRequest : removeFromCart request failure, User Not FoundFakeUser
+2022-06-16 09:19:50.862  INFO 44402 --- [main] c.e.demo.controllers.UserController      : cartRequest : Start addToCartBadPath Test
+2022-06-16 09:19:50.864 ERROR 44402 --- [main] c.e.demo.controllers.CartController      : cartRequest : addToCart request failure, UserName : FakeUser
+2022-06-16 09:19:50.998  INFO 44402 --- [main] c.e.demo.controllers.UserController      : orderRequest : Start submitUserOrderSadPath Test
+2022-06-16 09:19:51.015 ERROR 44402 --- [main] c.e.demo.controllers.OrderController     : orderRequest : order Submit request failure, User Not Found : test123
+2022-06-16 09:19:51.016  INFO 44402 --- [main] c.e.demo.controllers.UserController      : orderRequest : Start getOrdersForUserBadPath Test
+2022-06-16 09:19:51.017 ERROR 44402 --- [main] c.e.demo.controllers.OrderController     : orderRequest : order History request failure, User Not Found : test123
+2022-06-16 09:19:51.021  INFO 44402 --- [main] c.e.demo.controllers.UserController      : orderRequest : Start submitUserOrderHappyPath Test
+2022-06-16 09:19:51.023  INFO 44402 --- [main] c.e.demo.controllers.OrderController     : orderRequest : order Submit request success UserName : test
+2022-06-16 09:19:51.027  INFO 44402 --- [main] c.e.demo.controllers.UserController      : orderRequest : Start getOrdersForUserHappyPath Test
+2022-06-16 09:19:51.030  INFO 44402 --- [main] c.e.demo.controllers.OrderController     : orderRequest : order History request success UserName : test
+2022-06-16 09:19:51.111  INFO 44402 --- [main] c.e.demo.controllers.UserController      : userRequest : Start createUserBadPath Test
+2022-06-16 09:19:51.112  INFO 44402 --- [main] c.e.demo.controllers.UserController      : userRequest : Create User request failure UserName : test
+2022-06-16 09:19:51.113  INFO 44402 --- [main] c.e.demo.controllers.UserController      : userRequest : Start createUserHappyPath Test
+2022-06-16 09:19:51.116  INFO 44402 --- [main] c.e.demo.controllers.UserController      : userRequest : Create User request success UserName : test
+2022-06-16 09:19:51.127  INFO 44402 --- [Thread-4] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2022-06-16 09:19:51.134  INFO 44402 --- [Thread-4] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-06-16 09:19:51.143  INFO 44402 --- [Thread-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-06-16 09:19:51.164  INFO 44402 --- [Thread-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
